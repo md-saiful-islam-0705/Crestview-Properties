@@ -93,11 +93,19 @@ const Navbar = () => {
           <>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <Link to="/profile" className="">
-                <div >
+                <div>
                   {user.photoURL ? (
-                    <img className="w-10 rounded-full" src={user.photoURL} alt="User Avatar" />
+                    <img
+                      className="w-10 rounded-full"
+                      src={user.photoURL}
+                      alt="User Avatar"
+                    />
                   ) : (
-                    <img className="w-10 rounded-full" src={userDefaultPic} alt="Default Avatar" />
+                    <img
+                      className="w-10 rounded-full"
+                      src={userDefaultPic}
+                      alt="Default Avatar"
+                    />
                   )}
                 </div>
               </Link>

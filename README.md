@@ -1,8 +1,21 @@
-# React + Vite
+# Crestview Properties
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live Site URL]
 
-Currently, two official plugins are available:
+## Features and Characteristics
+- Responsive design for mobile, tablet, and desktop views.
+- Utilizes environment variables for Firebase config keys.
+- Navbar with active routes and conditional user profile display.
+- Login and Register pages with password and email-based authentication, including social(GitHub) login options.
+- Banner section with a slider showcasing a minimum of 3 slides.
+- Estate Details page for in-depth information about selected properties, with protected routes ensuring authentication.
+- Custom 404 page for handling not found routes.
+- Extra private route with meaningful and relevant content.
+- Dynamic page titles for improved SEO and user experience.
+- Persistent user information display in the navbar using Firebase's onAuthStateChanged method.
+- Creation of a protected route for users to view and update their profile information securely using Firebase's updateProfile() method.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## npm Package Used
+- AOS Package
+- Animate.css
+- React-leaflet

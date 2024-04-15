@@ -9,14 +9,12 @@ const Navbar = () => {
   const handleSignOut = () => {
     logOut()
       .then(() => {
-        // Optional: You can perform any additional actions after signing out, such as navigating to another page
         console.log("User signed out");
       })
       .catch((error) => {
         console.error("Error signing out:", error);
       });
   };
-
 
   const navLinks = (
     <>
@@ -94,15 +92,20 @@ const Navbar = () => {
         {user ? (
           <>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                {user.photoURL ? (
-                  <img src={user.photoURL} alt="User Avatar" />
-                ) : (
-                  <img src={userDefaultPic} alt="Default Avatar" />
-                )}
-              </div>
+              <Link to="/profile" className="">
+                <div >
+                  {user.photoURL ? (
+                    <img className="w-10 rounded-full" src={user.photoURL} alt="User Avatar" />
+                  ) : (
+                    <img className="w-10 rounded-full" src={userDefaultPic} alt="Default Avatar" />
+                  )}
+                </div>
+              </Link>
             </label>
-            <button onClick={handleSignOut} className="btn btn-sm btn-outline border-none">
+            <button
+              onClick={handleSignOut}
+              className="btn btn-sm btn-outline border-none"
+            >
               Sign Out
             </button>
           </>

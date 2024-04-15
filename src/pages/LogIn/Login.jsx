@@ -3,13 +3,21 @@ import Navbar from "../shared/Navbar";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+    const handleLogin = e => {
+        e.preventDefault()
+        console.log(e.currentTarget)
+        const form = new FormData(e.currentTarget);
+        console.log(form)
+       
+    }
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar></Navbar>
       <div className="flex-grow ">
         <div className="container mx-auto ">
           <h2 className="text-3xl my-10 text-center font-semibold">Login</h2>
-          <form className=" md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-br from-pink-300 to-purple-500 p-7 shadow-md rounded-lg">
+          <form onSubmit={handleLogin} className=" md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-br from-pink-300 to-purple-500 p-7 shadow-md rounded-lg">
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-lg">Email</span>

@@ -11,8 +11,11 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
+    console.log(e.currentTarget);
+    const form = new FormData(e.currentTarget);
+    console.log(form)
     // Password verification
     const uppercaseRegex = /[A-Z]/;
     const lowercaseRegex = /[a-z]/;
@@ -39,7 +42,7 @@ const Register = () => {
         <h2 className="text-3xl my-10 text-center font-semibold">Register</h2>
         <form
         className="md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-br from-blue-500 to-purple-500 p-7 shadow-lg rounded-lg"
-        onSubmit={handleSubmit}
+        onSubmit={handleRegister}
       >
         <div className="form-control">
           <label className="label">

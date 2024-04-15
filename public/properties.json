@@ -1,0 +1,75 @@
+[
+    {
+      "image": "https://i.ibb.co/vsFXrVF/house-1.jpg",
+      "estate_title": "Modern Family Home",
+      "id": "1",
+      "segment_name": "Residential",
+      "description": "Beautiful modern family home with stunning views.",
+      "price": "$500,000",
+      "status": "sale",
+      "area": "2500 sq ft",
+      "location": "New York City",
+      "facilities": ["3 bedrooms", "2 bathrooms", "Swimming pool"]
+    },
+    {
+      "image": "https://i.ibb.co/cN40jQ5/house-2.jpg",
+      "estate_title": "Luxury Villa",
+      "id": "2",
+      "segment_name": "Residential",
+      "description": "Luxurious villa with breathtaking ocean views.",
+      "price": "$1,200,000",
+      "status": "sale",
+      "area": "4000 sq ft",
+      "location": "Los Angeles",
+      "facilities": ["5 bedrooms", "4 bathrooms", "Home theater"]
+    },
+    {
+      "image": "https://i.ibb.co/C8qYF0v/house-3.jpg",
+      "estate_title": "Cozy Cottage",
+      "id": "3",
+      "segment_name": "Residential",
+      "description": "Charming cottage nestled in the countryside.",
+      "price": "$300,000",
+      "status": "sale",
+      "area": "1500 sq ft",
+      "location": "Countryside",
+      "facilities": ["2 bedrooms", "1 bathroom", "Garden"]
+    },
+    {
+      "image": "https://i.ibb.co/gFK51VY/house-4.jpg",
+      "estate_title": "Urban Loft",
+      "id": "4",
+      "segment_name": "Residential",
+      "description": "Trendy loft apartment in the heart of the city.",
+      "price": "$700,000",
+      "status": "sale",
+      "area": "1800 sq ft",
+      "location": "Downtown",
+      "facilities": ["Open floor plan", "City views", "Fitness center"]
+    },
+    {
+      "image": "https://i.ibb.co/4VVGG72/house-5.jpg",
+      "estate_title": "Mountain Retreat",
+      "id": "5",
+      "segment_name": "Residential",
+      "description": "Peaceful retreat surrounded by nature and charming view in countryside.",
+      "price": "$400,000",
+      "status": "sale",
+      "area": "2200 sq ft",
+      "location": "Mountainous area",
+      "facilities": ["3 bedrooms", "2 bathrooms", "Hiking trails"]
+    },
+    {
+      "image": "https://i.ibb.co/2NsW4SX/house-6.jpg",
+      "estate_title": "Beachfront Condo",
+      "id": "6",
+      "segment_name": "Residential",
+      "description": "Stylish condo with direct access to the beach.",
+      "price": "$800,000",
+      "status": "sale",
+      "area": "1600 sq ft",
+      "location": "Beachfront",
+      "facilities": ["Ocean views", "Community pool", "Gym"]
+    }
+  ]
+  

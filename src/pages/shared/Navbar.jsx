@@ -27,7 +27,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/properties" activeClassName="font-bold text-indigo-600">
-          Properties
+          Latest Estates
         </NavLink>
       </li>
       <li>

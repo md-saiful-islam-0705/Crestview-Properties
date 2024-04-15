@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/properties',
-                element: <Properties />,
+                element: <PrivateRoute><Properties /></PrivateRoute> ,
             },
             {
                 path: '/login',
@@ -30,10 +30,6 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>,
-            },
-            {
-                path: '/properties',
-                element: <Properties />,
             },
             {
                 path: '/details/:id',

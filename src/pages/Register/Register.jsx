@@ -5,6 +5,7 @@ import Footer from "../shared/Footer";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -13,6 +14,8 @@ const Register = () => {
   const [photoURL, setPhotoURL] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -37,7 +40,6 @@ const Register = () => {
       return;
     }
 
-    // Call createUser function to register the user
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -58,7 +60,7 @@ const Register = () => {
           className="md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-br from-blue-500 to-purple-500 p-7 shadow-lg rounded-lg"
           onSubmit={handleRegister}
         >
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="label-text text-lg">Name</span>
             </label>
@@ -71,7 +73,7 @@ const Register = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="label-text text-lg">Email</span>
             </label>
@@ -84,7 +86,7 @@ const Register = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="label-text text-lg">Photo URL</span>
             </label>
@@ -96,33 +98,47 @@ const Register = () => {
               className="input input-bordered"
             />
           </div>
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="label-text text-lg">Password</span>
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="input input-bordered"
+              className="input input-bordered pr-10"
             />
+            <button
+              type="button"
+              className="absolute inset-y-0 text-2xl right-2 top-10 flex items-center px-2"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </button>
           </div>
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="label-text text-lg">Confirm Password</span>
             </label>
             <input
-              type="password"
+              type={showConfirmPassword ? "text" : "password"}
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm Password"
-              className="input input-bordered"
+              className="input input-bordered pr-10"
             />
+            <button
+              type="button"
+              className="absolute inset-y-0 right-2 text-2xl top-10 flex items-center px-2"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+            </button>
           </div>
-          
+
           <div className="form-control mt-6">
             <button className="btn btn-outline text-white border-pink-100 hover:bg-violet-600 hover:border-none">
               Register

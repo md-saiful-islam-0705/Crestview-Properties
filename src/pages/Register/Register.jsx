@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../shared/Navbar";
 import Footer from "../shared/Footer";
@@ -6,6 +6,8 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -50,6 +52,13 @@ const Register = () => {
         console.error(error);
       });
   };
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true
+    });
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -58,7 +67,7 @@ const Register = () => {
         <h2 className="text-3xl my-10 text-center font-semibold">Register</h2>
         <form
           className="md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-br from-blue-500 to-purple-500 p-7 shadow-lg rounded-lg"
-          onSubmit={handleRegister}
+          onSubmit={handleRegister} data-aos="slide-up"
         >
           <div className="form-control relative">
             <label className="label">

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Navbar from "../shared/Navbar";
@@ -7,12 +7,16 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Login = () => {
   const { signInWithGoogle, signInWithGitHub, signIn } =
     useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+
+  
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -38,15 +42,24 @@ const Login = () => {
       });
   };
 
+  useEffect(() => {
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: true
+  });
+}, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar></Navbar>
-      <div className="flex-grow mb-10">
+      <div className="flex-grow mb-10 ">
         <div className="container mx-auto ">
           <h2 className="text-3xl my-10 text-center font-semibold">Login</h2>
           <form
             onSubmit={handleLogin}
-            className="md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-br from-pink-300 to-purple-500 p-7 shadow-md rounded-lg"
+            data-aos="slide-left"
+            className=" md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-br from-pink-300 to-purple-500 p-7 shadow-md rounded-lg"
           >
             <div className="form-control">
               <label className="label">

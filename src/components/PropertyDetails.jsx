@@ -2,10 +2,22 @@ import PropTypes from "prop-types";
 import { useLoaderData, useParams } from "react-router-dom";
 import Navbar from "../pages/shared/Navbar";
 import Footer from "../pages/shared/Footer";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
 
 const PropertyDetails = () => {
   const properties = useLoaderData();
   const { id } = useParams();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 3000,
+      easing: 'ease-in-out',
+      once: true
+    });
+  }, []);
 
   if (!Array.isArray(properties)) {
     return <div>Properties data is not available.</div>;
@@ -17,6 +29,7 @@ const PropertyDetails = () => {
   if (!property) {
     return <div>No property found.</div>;
   }
+  
 
   const {
     image,
@@ -29,10 +42,11 @@ const PropertyDetails = () => {
     facilities,
   } = property;
 
+  
   return (
     <>
       <Navbar></Navbar>
-      <div className="bg-white shadow-md rounded-lg p-6 m-4 flex flex-col justify-between h-full">
+      <div data-aos="fade-up" className="bg-white shadow-md rounded-lg p-6 m-4 flex flex-col justify-between h-full">
         <div>
           <img
             src={image}

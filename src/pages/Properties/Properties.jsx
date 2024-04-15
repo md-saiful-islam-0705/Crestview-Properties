@@ -4,6 +4,7 @@ import Footer from "../shared/Footer";
 import PropertiesNewsCard from "./PropertiesNewsCard";
 
 
+
 const Properties = () => {
     const propertiesNews = useLoaderData(); 
 
@@ -15,11 +16,12 @@ const Properties = () => {
                     Latest Properties
                 </h2>
             </div>
-            <div className="grid grid-cols-1 my-5 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 my-5 md:grid-cols-1 lg:grid-cols-3 gap-6">
                 {propertiesNews.map((property) => (
                     <PropertiesNewsCard key={property.id} property={property} />
                 ))}
             </div>
+            
             <Footer />
         </div>
     );

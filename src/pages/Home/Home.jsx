@@ -3,16 +3,29 @@ import PropertyCard from "../../components/PropertyCard";
 import Navbar from "../shared/Navbar";
 import Banner from "../../components/Banner";
 import Footer from "../shared/Footer";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+import 'animate.css';
+
 
 const Home = () => {
     const properties = useLoaderData(); 
 
+    useEffect(() => {
+        AOS.init({
+          duration: 2000,
+          easing: 'ease-in-out',
+          once: true
+        });
+      }, []);
+
     return (
-        <div className="container mx-auto">
+        <div data-aos="fade-up" className="container mx-auto ">
             <Navbar />
             <Banner />
             <div className="p-5  rounded-2xl shadow my-2 ">
-                <h2 className="text-3xl text-gray-500 text-center font-semibold mb-4">
+                <h2 className="text-3xl  text-gray-500 animate__animated animate__bounce animate__repeat-3  text-center font-semibold mb-4">
                     Featured Properties
                 </h2>
             </div>

@@ -1,23 +1,53 @@
-import Footer from "../shared/Footer";
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 import Navbar from "../shared/Navbar";
-import { Link } from "react-router-dom";
+import Footer from "../shared/Footer";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-    const handleLogin = e => {
-        e.preventDefault()
-        console.log(e.currentTarget)
-        const form = new FormData(e.currentTarget);
-        console.log(form)
-       
-    }
+  const { signInWithGoogle, signInWithGitHub, signIn } =
+    useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    signIn(email, password)
+      .then(() => {
+        toast.success("Login successful!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        if (
+          error.code === "auth/user-not-found" ||
+          error.code === "auth/wrong-password"
+        ) {
+          toast.error("Invalid email or password");
+        } else {
+          console.error(error);
+          toast.error("An error occurred while logging in");
+        }
+      });
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar></Navbar>
-      <div className="flex-grow ">
+      <div className="flex-grow mb-10">
         <div className="container mx-auto ">
           <h2 className="text-3xl my-10 text-center font-semibold">Login</h2>
-          <form onSubmit={handleLogin} className=" md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-br from-pink-300 to-purple-500 p-7 shadow-md rounded-lg">
+          <form
+            onSubmit={handleLogin}
+            className="md:w-3/4 lg:w-1/2 mx-auto bg-gradient-to-br from-pink-300 to-purple-500 p-7 shadow-md rounded-lg"
+          >
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-lg">Email</span>
@@ -52,6 +82,14 @@ const Login = () => {
                 Login
               </button>
             </div>
+            <div className="flex justify-center space-x-4 mt-4">
+              <button onClick={signInWithGoogle} className="btn btn-google">
+                Sign in with Google <FcGoogle />
+              </button>
+              <button onClick={signInWithGitHub} className="btn btn-github">
+                Sign in with GitHub <FaGithub />
+              </button>
+            </div>
           </form>
           <p className="text-center mt-4">
             Do not have an account{" "}
@@ -65,6 +103,7 @@ const Login = () => {
         </div>
       </div>
       <Footer className="mt-auto"></Footer>
+      <ToastContainer />
     </div>
   );
 };

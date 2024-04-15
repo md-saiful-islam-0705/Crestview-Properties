@@ -1,10 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 import userDefaultPic from "../../assets/user.png";
 
 const Navbar = () => {
-  // const handleSignOut = () => {
+  const { user, logOut } = useContext(AuthContext);
 
-  // }
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        // Optional: You can perform any additional actions after signing out, such as navigating to another page
+        console.log("User signed out");
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+      });
+  };
+
 
   const navLinks = (
     <>
@@ -74,12 +86,26 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 gap-2">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-          <div className="w-10 rounded-full">
-            <img src={userDefaultPic} alt="User Avatar" />
-          </div>
-        </label>
-        <button className="btn">Sign Out</button>
+        {user ? (
+          <>
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                {user.photoURL ? (
+                  <img src={user.photoURL} alt="User Avatar" />
+                ) : (
+                  <img src={userDefaultPic} alt="Default Avatar" />
+                )}
+              </div>
+            </label>
+            <button onClick={handleSignOut} className="btn btn-sm btn-outline border-none">
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <Link to="/login" className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

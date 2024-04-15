@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "estate_title": "Luxury Villa with Ocean View",
+      "segment_name": "Residential",
+      "description": "Experience luxury living with breathtaking ocean views from every room.",
+      "price": "$2,500,000",
+      "status": "Sale",
+      "area": "5000 sq ft",
+      "location": "Malibu, California",
+      "facilities": ["Swimming Pool", "Gym", "Spa", "Garden"],
+      "image": "https://i.ibb.co/6JZ6kpP/h-1.jpg"
+    },
+    {
+      "id": 2,
+      "estate_title": "Modern City Apartment",
+      "segment_name": "Residential",
+      "description": "Sleek and stylish apartment located in the heart of the city.",
+      "price": "$800,000",
+      "status": "Sale",
+      "area": "1500 sq ft",
+      "location": "New York City, New York",
+      "facilities": ["Balcony", "Fitness Center", "Concierge Service"],
+      "image": "https://i.ibb.co/1JdTs7F/h-3.jpg"
+    },
+    {
+      "id": 3,
+      "estate_title": "Cozy Mountain Cabin",
+      "segment_name": "Vacation Homes",
+      "description": "Escape to the mountains and enjoy the tranquility of nature.",
+      "price": "$400,000",
+      "status": "Sale",
+      "area": "2000 sq ft",
+      "location": "Aspen, Colorado",
+      "facilities": ["Fireplace", "Deck", "Hot Tub"],
+      "image": "https://i.ibb.co/Cv3wKGw/h2.jpg"
+    }
+  ]
+  

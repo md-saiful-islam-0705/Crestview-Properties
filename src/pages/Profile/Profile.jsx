@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { updateProfile } from "firebase/auth";
 import Footer from "../shared/Footer";
 import Navbar from "../shared/Navbar";
 import { toast, ToastContainer } from "react-toastify";
@@ -8,12 +7,21 @@ import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
-  const [displayName, setDisplayName] = useState(user.displayName || "");
-  const [photoURL, setPhotoURL] = useState(user.photoURL || "");
+  const { user, updateUserProfile } = useContext(AuthContext);
+  const [displayName, setDisplayName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      setDisplayName(user.displayName || "");
+      setPhotoURL(user.photoURL || "");
+      setEmail(user.email || "");
+    }
+  }, [user]);
 
   const handleSave = () => {
-    updateProfile(user, { displayName, photoURL })
+    updateUserProfile(displayName, photoURL)
       .then(() => {
         toast.success("Profile updated successfully!");
       })
@@ -24,8 +32,8 @@ const Profile = () => {
 
   return (
     <>
-    <Helmet>
-        <title>Profile-CrestView Properties</title>
+      <Helmet>
+        <title>Profile - CrestView Properties</title>
       </Helmet>
       <div className="flex flex-col min-h-screen">
         <Navbar />
@@ -61,6 +69,18 @@ const Profile = () => {
                     value={photoURL}
                     className="border p-3 rounded-md w-full"
                     onChange={(e) => setPhotoURL(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="font-bold">
+                    Email:{" "}
+                  </label>
+                  <input
+                    type="text"
+                    id="email"
+                    value={email}
+                    className="border p-3 rounded-md w-full"
+                    disabled
                   />
                 </div>
                 <div>

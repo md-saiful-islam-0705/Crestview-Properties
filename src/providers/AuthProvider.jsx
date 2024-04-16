@@ -1,8 +1,7 @@
 import PropTypes from "prop-types"; 
 import { createContext, useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { getAuth, updateProfile, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import app from "../firebase/firebase.config";
-
 
 export const AuthContext = createContext(null);
 
@@ -56,6 +55,14 @@ const AuthProvider = ({ children }) => {
         }
     }, [auth])
 
+    const updateUserProfile = async (displayName, photoURL) => {
+        try {
+          await updateProfile(auth.currentUser, { displayName, photoURL });
+        } catch (error) {
+          console.error("Failed to update profile:", error);
+        }
+      };
+
     const authInfo = {
         user,
         loading,
@@ -63,7 +70,8 @@ const AuthProvider = ({ children }) => {
         signIn,
         logOut,
         signInWithGoogle,
-        signInWithGitHub
+        signInWithGitHub,
+        updateUserProfile
     }
 
     return (

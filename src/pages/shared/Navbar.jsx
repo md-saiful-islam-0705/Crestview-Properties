@@ -90,33 +90,36 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <>
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <Link to="/profile" className="">
-                <div>
-                  {user.photoURL ? (
-                    <img
-                      className="w-10 rounded-full"
-                      src={user.photoURL}
-                      alt="User Avatar"
-                    />
-                  ) : (
-                    <img
-                      className="w-10 rounded-full"
-                      src={userDefaultPic}
-                      alt="Default Avatar"
-                    />
-                  )}
-                </div>
-              </Link>
-            </label>
+          <div className="flex items-center">
+            <Link
+              to="/profile"
+              className="relative flex items-center"
+              title={user.displayName}
+            >
+              {user.photoURL ? (
+                <img
+                  className="w-10 h-10 rounded-full mr-2"
+                  src={user.photoURL}
+                  alt="User Avatar"
+                />
+              ) : (
+                <img
+                  className="w-10 h-10 rounded-full mr-2"
+                  src={userDefaultPic}
+                  alt="Default Avatar"
+                />
+              )}
+              <span className="absolute top-full text-white rounded px-2 py-1 whitespace-nowrap hidden group-hover:block">
+                {user.displayName}
+              </span>
+            </Link>
             <button
               onClick={handleSignOut}
-              className="btn btn-sm btn-outline border-none"
+              className="btn btn-sm btn-outline border-none ml-3"
             >
               Sign Out
             </button>
-          </>
+          </div>
         ) : (
           <Link to="/login" className="btn">
             Login

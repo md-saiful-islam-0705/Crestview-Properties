@@ -10,9 +10,25 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const auth = getAuth(app);
 
-    const createUser = (email, password) => {
+    const createUser = (email, password, displayName, photoURL) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                return updateProfile(user, {
+                    displayName: displayName,
+                    photoURL: photoURL
+                }).then(() => {
+                    setUser(user);
+                    setLoading(false);
+                    return userCredential;
+                });
+            })
+            .catch((error) => {
+                console.error("Error creating user:", error);
+                setLoading(false);
+                throw error;
+            });
     }
 
     const signIn = (email, password) => {
@@ -57,11 +73,12 @@ const AuthProvider = ({ children }) => {
 
     const updateUserProfile = async (displayName, photoURL) => {
         try {
-          await updateProfile(auth.currentUser, { displayName, photoURL });
+            await updateProfile(auth.currentUser, { displayName, photoURL });
         } catch (error) {
-          console.error("Failed to update profile:", error);
+            console.error("Failed to update profile:", error);
+            throw error;
         }
-      };
+    };
 
     const authInfo = {
         user,

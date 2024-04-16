@@ -20,6 +20,14 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
+
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -42,7 +50,7 @@ const Register = () => {
       return;
     }
 
-    createUser(email, password)
+    createUser(email, password, name, photoURL)
       .then((result) => {
         console.log(result.user);
         // Show success toast
@@ -50,15 +58,9 @@ const Register = () => {
       })
       .catch((error) => {
         console.error(error);
+        toast.error("Failed to register. Please try again.");
       });
   };
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
 
   return (
     <>

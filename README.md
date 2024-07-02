@@ -22,8 +22,8 @@
 
 ### Clone the Repository, and run into locally 
 ```bash
-git clone https://github.com/md-saiful-islam-0705/Book-Mate-Client.git
-cd Book-Mate-Client
+git clone https://github.com/md-saiful-islam-0705/Crestview-Properties.git
+cd Crestview-Properties
 
 npm install
 npm run dev

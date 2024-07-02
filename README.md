@@ -19,3 +19,11 @@
 - AOS Package
 - Animate.css
 - React-leaflet
+
+### Clone the Repository, and run into locally 
+```bash
+git clone https://github.com/md-saiful-islam-0705/Book-Mate-Client.git
+cd Book-Mate-Client
+
+npm install
+npm run dev
